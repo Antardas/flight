@@ -108,7 +108,7 @@ export default class App extends React.Component {
             <div className='row' >
                 
                 <div className='columnThree' >
-                    <h3 > SWADESHI AIRLINES </h3>{' '}
+                    <h3 > INDIA AIRLINES </h3>{' '}
                     <div>
                         <p> Cancelled TICKET DETAILS </p>{' '}
                         <div className='row' style={{display: 'flex',  justifyContent:'center', alignItems:'center'}} >

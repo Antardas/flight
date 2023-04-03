@@ -1,11 +1,25 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { FaAngleDoubleDown } from "react-icons/fa";
 import './Tab.css'
 export default function SeatSelection() {
     const [name, setName] = useState([])
     const [arrowDown, setArrowDown] = useState(false)
     const [gender, setGender] = useState([])
-    const [reservedSeat, setReservedSeat] = useState(["1A", "2A", "2B", "3B", "4A", "5C", "6A", "7B", "7C", '8B', "9B", "9C"])
+    // const [reservedSeat, setReservedSeat] = useState(["1A", "2A", "2B", "3B", "4A", "5C", "6A", "7B", "7C", '8B', "9B", "9C"])
+    const [reservedSeat, setReservedSeat] = useState(["1A", "2A", "3D"])
+    const seatList = [
+        ["1A", "2A", '3A'],
+        ["1B", "2B", '3B'],
+        ["1C", "2C", '3C'],
+        ["1D", "2D", '3D'],
+        ["1E", "2E", '3E'],
+        ["1F", "2F", '3F'],
+        ["1G", "2G", '3G'],
+        ["1H", "2H", '3H'],
+        ["1I", "2I", '3I'],
+        ["1J", "2J", '3I'],
+
+    ];
     const [seatNumber, setSeatnumber] = useState([])
     // const [passengers, setPassengers] = useState([])
     // useEffect(()=>{
@@ -58,11 +72,11 @@ export default function SeatSelection() {
     const handleSubmitDetails = e => {
         e.preventDefault()
         setArrowDown(true)
-        localStorage.setItem("reservedSeats", JSON.stringify(seatNumber))
-        localStorage.setItem("nameData", JSON.stringify(name))
-        console.log(name)
-        console.log(gender)
+        localStorage.setItem("reservedSeats", JSON.stringify(seatNumber));
+        localStorage.setItem("nameData", JSON.stringify(name));
     }
+
+
 
     const renderPassengerData = (seatArray) => {
         return seatArray.map((seat, idx) => {
@@ -82,182 +96,39 @@ export default function SeatSelection() {
 
         })
     }
+
+    const SeatList = () => {
+        return (<ol className="cabin fuselage">
+            {
+                seatList.map((seats, idx) => <li className="row row--1">
+                    <ol className="seats" type={`${seats[0][1]}`}>
+                        {
+                            seats.map((seat, idx2) =>
+                            (reservedSeat.includes(seat) ? <li className="seat">
+                                <input type="checkbox" disabled value={`${seat}`} id={`${seat}`} />
+                                <label htmlFor={`${seat}`}>{seat}</label>
+                            </li> : <li className="seat">
+                                <input type="checkbox" id={`${seat}`} value={`${seat}`} />
+                                <label htmlFor={`${seat}`}>{`${seat}`}</label>
+                            </li>)
+                            )
+                        }
+                    </ol>
+                </li>)
+            }
+        </ol>);
+    }
+
     return (
         <div className="ss">
             <div className="row">
                 <div className="column1">
                     <div className="plane">
                         <form onChange={e => getSeatNumber(e)}>
-                            <ol className="cabin fuselage">
-                                <li className="row row--1">
-                                    <ol className="seats" type="A">
-                                        <li className="seat">
-                                            <input type="checkbox" disabled value="1A" id="1A" />
-                                            <label htmlFor="1A">1A</label>
-                                        </li>
-                                        <li className="seat">
-                                            <input type="checkbox" id="1B" value="1B" />
-                                            <label htmlFor="1B">1B</label>
-                                        </li>
-                                        <li className="seat">
-                                            <input type="checkbox" value="1C" id="1C" />
-                                            <label htmlFor="1C">1C</label>
-                                        </li>
-                                    </ol>
-                                </li>
-                                <li className="row row--2">
-                                    <ol className="seats" type="A">
-                                        <li className="seat">
-                                            <input type="checkbox" disabled value="2A" id="2A" />
-                                            <label htmlFor="2A">2A</label>
-                                        </li>
-                                        <li className="seat">
-                                            <input type="checkbox" disabled value="2B" id="2B" />
-                                            <label htmlFor="2B">2B</label>
-                                        </li>
-                                        <li className="seat">
-                                            <input type="checkbox" value="2C" id="2C" />
-                                            <label htmlFor="2C">2C</label>
-                                        </li>
 
-                                    </ol>
-                                </li>
-                                <li className="row row--3">
-                                    <ol className="seats" type="A">
-                                        <li className="seat">
-                                            <input type="checkbox" value="3A" id="3A" />
-                                            <label htmlFor="3A">3A</label>
-                                        </li>
-                                        <li className="seat">
-                                            <input type="checkbox" disabled value="3B" id="3B" />
-                                            <label htmlFor="3B">3B</label>
-                                        </li>
-                                        <li className="seat">
-                                            <input type="checkbox" value="3C" id="3C" />
-                                            <label htmlFor="3C">3C</label>
-                                        </li>
+                            <SeatList />
 
-                                    </ol>
-                                </li>
-                                <li className="row row--4">
-                                    <ol className="seats" type="A">
-                                        <li className="seat">
-                                            <input type="checkbox" disabled value="4A" id="4A" />
-                                            <label htmlFor="4A">4A</label>
-                                        </li>
-                                        <li className="seat">
-                                            <input type="checkbox" value="4B" id="4B" />
-                                            <label htmlFor="4B">4B</label>
-                                        </li>
-                                        <li className="seat">
-                                            <input type="checkbox" value="4C" id="4C" />
-                                            <label htmlFor="4C">4C</label>
-                                        </li>
 
-                                    </ol>
-                                </li>
-                                <li className="row row--5">
-                                    <ol className="seats" type="A">
-                                        <li className="seat">
-                                            <input type="checkbox" value="5A" id="5A" />
-                                            <label htmlFor="5A">5A</label>
-                                        </li>
-                                        <li className="seat">
-                                            <input type="checkbox" value="5B" id="5B" />
-                                            <label htmlFor="5B">5B</label>
-                                        </li>
-                                        <li className="seat">
-                                            <input type="checkbox" disabled value="5C" id="5C" />
-                                            <label htmlFor="5C">5C</label>
-                                        </li>
-
-                                    </ol>
-                                </li>
-                                <li className="row row--6">
-                                    <ol className="seats" type="A">
-                                        <li className="seat">
-                                            <input type="checkbox" disabled value="6A" id="6A" />
-                                            <label htmlFor="6A">6A</label>
-                                        </li>
-                                        <li className="seat">
-                                            <input type="checkbox" value="6B" id="6B" />
-                                            <label htmlFor="6B">6B</label>
-                                        </li>
-                                        <li className="seat">
-                                            <input type="checkbox" value="6C" id="6C" />
-                                            <label htmlFor="6C">6C</label>
-                                        </li>
-
-                                    </ol>
-                                </li>
-                                <li className="row row--7">
-                                    <ol className="seats" type="A">
-                                        <li className="seat">
-                                            <input type="checkbox" value="7A" id="7A" />
-                                            <label htmlFor="7A">7A</label>
-                                        </li>
-                                        <li className="seat">
-                                            <input type="checkbox" disabled value="7B" id="7B" />
-                                            <label htmlFor="7B">7B</label>
-                                        </li>
-                                        <li className="seat">
-                                            <input type="checkbox" disabled value="7C" id="7C" />
-                                            <label htmlFor="7C">7C</label>
-                                        </li>
-
-                                    </ol>
-                                </li>
-                                <li className="row row--8">
-                                    <ol className="seats" type="A">
-                                        <li className="seat">
-                                            <input type="checkbox" value="8A" id="8A" />
-                                            <label htmlFor="8A">8A</label>
-                                        </li>
-                                        <li className="seat">
-                                            <input type="checkbox" disabled value="8B" id="8B" />
-                                            <label htmlFor="8B">8B</label>
-                                        </li>
-                                        <li className="seat">
-                                            <input type="checkbox" value="8C" id="8C" />
-                                            <label htmlFor="8C">8C</label>
-                                        </li>
-
-                                    </ol>
-                                </li>
-                                <li className="row row--9">
-                                    <ol className="seats" type="A">
-                                        <li className="seat">
-                                            <input type="checkbox" value="9A" id="9A" />
-                                            <label htmlFor="9A">9A</label>
-                                        </li>
-                                        <li className="seat">
-                                            <input type="checkbox" disabled value="9B" id="9B" />
-                                            <label htmlFor="9B">9B</label>
-                                        </li>
-                                        <li className="seat">
-                                            <input type="checkbox" disabled value="9C" id="9C" />
-                                            <label htmlFor="9C">9C</label>
-                                        </li>
-
-                                    </ol>
-                                </li>
-                                <li className="row row--10">
-                                    <ol className="seats" type="A">
-                                        <li className="seat">
-                                            <input type="checkbox" value="10A" id="10A" />
-                                            <label htmlFor="10A">10A</label>
-                                        </li>
-                                        <li className="seat">
-                                            <input type="checkbox" value="10B" id="10B" />
-                                            <label htmlFor="10B">10B</label>
-                                        </li>
-                                        <li className="seat">
-                                            <input type="checkbox" value="10C" id="10C" />
-                                            <label htmlFor="10C">10C</label>
-                                        </li>
-                                    </ol>
-                                </li>
-                            </ol>
                         </form>
                     </div>
                 </div>
@@ -277,8 +148,6 @@ export default function SeatSelection() {
                     </div>
                 </div>
             </div>
-
         </div>
-
     )
 }

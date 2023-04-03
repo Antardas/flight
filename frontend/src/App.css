@@ -32,3 +32,21 @@ body {
     transition: opacity 150ms linear;
 
 }
+
+/* Remove some extra space from the tab pan */
+.tab-content>.active {
+
+    position: relative !important;
+    left: -15px;
+    top: 20px;
+}
+
+.nav-pills .nav-link.active, .nav-pills .show>.nav-link {
+    background-color: #FF6000;
+    
+}
+.nav-pills .nav-link{
+    color: #454545;
+    border-radius: 20px;
+}
+

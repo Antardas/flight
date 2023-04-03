@@ -18,7 +18,6 @@ class KommunicateChat extends Component {
     render(){
         return (
             <div>
-                <h1>this is chat bot</h1>
             </div>
         )
     }

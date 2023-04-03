@@ -49,8 +49,8 @@ export default function RouteSelection({ history }) {
                     </div>
                 </nav>
             </div>
-            <div>
-                <ul className="nav nav-pills">
+            <div >
+                <ul className="nav nav-pills nav-container-nav">
                     <li className="nav-item">
                         <a className="nav-link active" data-toggle="pill" href="#home">Ticket Booking</a>
                     </li>
@@ -80,7 +80,7 @@ export default function RouteSelection({ history }) {
                     </li>
                 </ul>
 
-                <div className="tab-content">
+                <div className="tab-content ">
                     <div className="tab-pane container active mn-box" id="home"><RouteSelector /></div>
                     <div className="tab-pane container fade mn-box" id="menu1"><SeatSelection /></div>
                     <div className="tab-pane container fade mn-box" id="menu2"><PaymentTab /></div>

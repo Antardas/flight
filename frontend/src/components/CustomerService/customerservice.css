@@ -289,8 +289,9 @@ ol {
     /* width: auto; */
     width: 100%;
     height: 100%;
-    border: 1px solid #00acee;
-    background-color: #00abeeb0;
+    border: 1px solid #454545;
+    background-color: #97d9f3b0;
+    border-radius: 10px;
 }
 
 .seatInfo {
@@ -406,4 +407,7 @@ ol {
     100% {
         top: 0;
     }
+}
+.nav-container-nav {
+    background-color: #ffe6c76b;
 }

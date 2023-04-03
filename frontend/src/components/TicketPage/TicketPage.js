@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import './TicketPage.css'
 export default function TicketPage({ history }) {
 
@@ -37,11 +37,15 @@ export default function TicketPage({ history }) {
     }
     const getSeatNumbers = () => {
         let noArray = localStorage.getItem("reservedSeats")
+        console.log(noArray);
+        if (noArray) {
+            return <h1>Choose a Seat</h1>
+        }
         let arr = JSON.parse(noArray)
         return arr.map((element, idx) => {
             return (
                 <div key={idx}>
-                    <p classsName="seatNo">{element}</p>
+                    <p className="seatNo">{element}</p>
                 </div>
             )
         })
@@ -58,6 +62,10 @@ export default function TicketPage({ history }) {
         let dat = localStorage.getItem("date")
         return <p>On: {dat}, 10 AM (Hourly commute)</p>
     }
+    useEffect(() => {
+        // localStorage.setItem()
+        localStorage.setItem("reservedSeats", JSON.stringify(["1A", "2A", "3D"]))
+    }, [])
     return (
 
         <div className="container">
@@ -83,7 +91,7 @@ export default function TicketPage({ history }) {
                 <article className="ticket">
                     <header className="ticket__wrapper">
                         <div className="ticket__header">
-                            1 🎟 SWADESHI AIRLINES
+                            1 🎟 INDIA Airlines
                         </div>
                     </header>
                     <div className="ticket__divider">

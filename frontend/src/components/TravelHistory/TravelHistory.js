@@ -34,7 +34,7 @@ export default class App extends React.Component {
             focused: target.name
         })
     }
-   
+
 
     handleSubmit = e => {
         e.preventDefault()
@@ -67,7 +67,7 @@ export default class App extends React.Component {
         localStorage.setItem('paymentData', JSON.stringify(this.state.token))
         window.location.href = '/upcomingPage'
     }
-    
+
     renderNamesOfPassenger = () => {
         let passArray = localStorage.getItem('nameData')
         if (passArray) {
@@ -103,7 +103,7 @@ export default class App extends React.Component {
             )
         }
     }
-  
+
     render() {
         const {
             name,
@@ -117,38 +117,38 @@ export default class App extends React.Component {
         } = this.state
 
         return (
-        
-        <div className='cancup' >
-            <div className='row' >
-                
-                <div className='columnThree' >
-                    <h3 > SWADESHI AIRLINES </h3>{' '}
-                    <div>
-                        <p> TRAVEL HISTORY DETAILS </p>{' '}
-                        <div className='row' >
-                            
-                            
-                                <button style={{marginRight:40}}onClick={e => this.moveToupcomingpage(e)}
+
+            <div className='cancup' >
+                <div className='row' >
+
+                    <div className='columnThree' >
+                        <h3 > INDIA AIRLINES </h3>{' '}
+                        <div>
+                            <p> TRAVEL HISTORY DETAILS </p>{' '}
+                            <div className='row' >
+
+
+                                <button style={{ marginRight: 40 }} onClick={e => this.moveToupcomingpage(e)}
                                     className='btn btn-light btCustoms' >
                                     Upcoming Flights {' '}
                                 </button>{' '}
                                 &nbsp;&nbsp;
-                                <button style={{marginRight:40}} onClick={e => this.moveToCompletedpage(e)}
+                                <button style={{ marginRight: 40 }} onClick={e => this.moveToCompletedpage(e)}
                                     className='btn btn-light btCustoms' >
                                     Completed Trips  {' '}
                                 </button>{' '}
                                 &nbsp;&nbsp;
-                                <button style={{marginRight:40}} onClick={e => this.moveToCancelPage(e)}
+                                <button style={{ marginRight: 40 }} onClick={e => this.moveToCancelPage(e)}
                                     className='btn btn-light btCustoms' >
                                     Cancelled Flights {' '}
                                 </button>{' '}
 
+                            </div>{' '}
                         </div>{' '}
                     </div>{' '}
                 </div>{' '}
-            </div>{' '}
-        </div>
-        
+            </div>
+
         )
     }
 }

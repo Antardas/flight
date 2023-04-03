@@ -1,10 +1,10 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import 'bootstrap/dist/css/bootstrap.min.css'
 import Homepage from './components/Homepage/Homepage'
 import RouteSelection from './components/RouteSelection/RouteSelection'
 import LogOrsign from './components/Login-Signup/LogOrsign'
-import Signup from './components/Login-Signup/Signup' 
+import Signup from './components/Login-Signup/Signup'
 import Profile from './components/Profile/Profile'
 import TicketPage from './components/TicketPage/TicketPage'
 import CancelPage from './components/CancelPage/CancelPage'
@@ -17,6 +17,9 @@ import './App.css';
 import KommunicateChat from './components/Chat';
 
 function App() {
+  // useEffect(() => {
+  //   localStorage.setItem("nameData", []);
+  // }, [])
   return (
     <div className="App">
       <Router>
@@ -32,12 +35,12 @@ function App() {
           <Route path="/upcomingPage" exact render={props => <UpcomingPage {...props} />} />
           <Route path="/cancelledPage" exact render={props => <CancelledPage {...props} />} />
           <Route path="/featuresPage" exact render={props => <FeaturesPage {...props} />} />
-          <Route path="/ServicePage" exact render ={props => <ServicePage {...props} />} />
+          <Route path="/ServicePage" exact render={props => <ServicePage {...props} />} />
         </Switch>
 
       </Router>
 
-      <KommunicateChat/>
+      <KommunicateChat />
     </div>
 
   );
