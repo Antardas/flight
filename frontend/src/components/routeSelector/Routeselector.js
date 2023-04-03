@@ -2,6 +2,8 @@ import React, { useState } from 'react'
 import './Routeselector.css'
 import * as apiCall from './routeApifunc'
 import BusList from '../BusList/BusList'
+import { MySwal } from '../../utils'
+
 export default function Routeselector() {
     const [dataInp, setData] = useState("")
     const [startCity, setStartCity] = useState('')
@@ -10,6 +12,8 @@ export default function Routeselector() {
         e.preventDefault()
         setDestination({ destination: e.target.value })
         localStorage.setItem("destination", e.target.value)
+        
+
     }
     const renderBusList = (dataInp) => {
         if (Object.keys(dataInp).length > 0) {
@@ -30,6 +34,12 @@ export default function Routeselector() {
             .then(response => response.data)
             .then(data => {
                 setData(data.bus)
+                MySwal.fire({
+                    icon: 'success',
+                    title: 'Your work has been saved',
+                    showConfirmButton: false,
+                    timer: 1500
+                })
             })
     }
 

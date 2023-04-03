@@ -14,6 +14,7 @@ import CancelledPage from './components/CancelledTicket/CancelledTicket'
 import FeaturesPage from './components/ChangingFeatures/FeaturesPage'
 import ServicePage from './components/ServicePage/ServicePage'
 import './App.css';
+import KommunicateChat from './components/Chat';
 
 function App() {
   return (
@@ -35,6 +36,8 @@ function App() {
         </Switch>
 
       </Router>
+
+      <KommunicateChat/>
     </div>
 
   );
