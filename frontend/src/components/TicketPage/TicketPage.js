@@ -38,7 +38,7 @@ export default function TicketPage({ history }) {
     const getSeatNumbers = () => {
         let noArray = localStorage.getItem("reservedSeats")
         console.log(noArray);
-        if (noArray) {
+        if (!noArray) {
             return <h1>Choose a Seat</h1>
         }
         let arr = JSON.parse(noArray)
@@ -64,7 +64,11 @@ export default function TicketPage({ history }) {
     }
     useEffect(() => {
         // localStorage.setItem()
-        localStorage.setItem("reservedSeats", JSON.stringify(["1A", "2A", "3D"]))
+        // if user didn't select any seat that time it will set the default
+        if (!localStorage.getItem("reservedSeats")) {
+
+            localStorage.setItem("reservedSeats", JSON.stringify(["1A"]));
+        }
     }, [])
     return (
 
